@@ -231,7 +231,7 @@ const compras = Vue.createApp({
         }
         for(item in this.carrito){
           console.log("Index de la lista: " + item) // Aplico lo mismo al carrito 
-          this.carrito[item]["precio"] = (this.parts[this.carrito[item]["id"] - 1].precio_variable * this.carrito[item]["cantidad"])
+          this.carrito[item]["precio"] = (this.parts[this.carrito[item]["id"] - 1].precio_variable * this.carrito[item]["cantidad"]).toFixed(2)
         }
       }
     }
