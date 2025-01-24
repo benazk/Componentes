@@ -29,20 +29,22 @@ const compras = Vue.createApp({
               <button @click="pc.cant--" :disabled="pc.cant <= 1">-</button>
               <span>{{ pc.cant }}</span>
               <button @click="pc.cant++" :disabled="pc.cant >= 5">+</button>
-              <button class='carrito' @click="anadirCarrito(pc.id, pc.cant), pc.cant = 0">Añadir al carrito</button>
+              <button class='carrito' @click="anadirCarrito(pc.id, pc.cant), pc.cant = 2000">Añadir al carrito</button>
             </div>
             
           </div>
         </div>
         <div class=flexcarrito>
         <button @click="mostrarCarrito = !mostrarCarrito" class="mCarrito">Carrito</button>
-          <div v-if="mostrarCarrito"class="barra_lateral">
-          
-            <div v-for="(item, index) in carrito">
+          <div v-if="mostrarCarrito" class="barra_lateral">
+            <div v-if="carrito.length > 0">
+              <div v-for="(item, index) in carrito">
               <img :src="parts[item['id'] - 1].imagen" :alt="parts[item['id'] - 1].componente" width="50" height="50" />
               {{ item["nombre"] }} x{{ item["cantidad"] }} ---> {{ item["precio"] }} {{ simbolos[monedaElegida] }}
               <button @click="carrito.splice(index, 1)"><img src="img/bin.webp" width="24" height="24"></button>
+              </div>
             </div>
+            <div v-else><strong>No hay ningún producto en el carrito</strong></div>
             <div class="sidebar-footer">Total: {{ precioTotal() }} {{ simbolos[monedaElegida] }}</div>
           </div>
         </div>
@@ -220,7 +222,7 @@ const compras = Vue.createApp({
           item.precio_variable = Number(item.precio_base) // Si la moneda es la divisa base, el precio variable será el de base
         }
         for(item in this.carrito){ // Aplico lo mismo al carrito 
-          this.carrito[item]["precio"] = (this.parts[item].precio_variable * this.carrito[item]["cantidad"])
+          this.carrito[item]["precio"] = (this.parts[this.carrito[item]["id"] - 1].precio_variable * this.carrito[item]["cantidad"])
         }
       }
       else {
@@ -229,7 +231,7 @@ const compras = Vue.createApp({
         }
         for(item in this.carrito){
           console.log("Index de la lista: " + item) // Aplico lo mismo al carrito 
-          this.carrito[item]["precio"] = (this.parts[item].precio_variable * this.carrito[item]["cantidad"])
+          this.carrito[item]["precio"] = (this.parts[this.carrito[item]["id"] - 1].precio_variable * this.carrito[item]["cantidad"])
         }
       }
     }
