@@ -40,7 +40,7 @@ const compras = Vue.createApp({
             <div v-if="carrito.length > 0">
               <div v-for="(item, index) in carrito" class="itemCarrito"> <!--Uso cada diccionario del array del carrito de la compra para componer el carrito con sus productos-->
                 <img :src="parts[item['id'] - 1].imagen" :alt="parts[item['id'] - 1].componente" width="50" height="50" />
-                {{ item["nombre"] }} x{{ item["cantidad"] }} ---> {{ item["precio"] }} {{ simbolos[monedaElegida] }}
+                {{ item["nombre"] }} x{{ item["cantidad"] }} ---> {{ item["precio"].toFixed(2) }} {{ simbolos[monedaElegida] }}
                 <button @click="carrito.splice(index, 1)"><img src="img/bin.webp" width="24" height="24"></button> <!--Con esto elimino el item del carito-->
               </div>
             </div>
