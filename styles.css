@@ -107,3 +107,7 @@ ul {
   display: flex;
   flex-flow: row;
 }
+.itemCarrito{
+  display: flex;
+  flex-flow: column;
+}
