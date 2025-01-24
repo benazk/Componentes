@@ -7,7 +7,7 @@ const compras = Vue.createApp({
         <label for="monedas">Moneda: </label> <!--Esta es una lista de opciones para elegir la divisa, que al elegir una divisa llama a la función cambiarValorMonetario()-->
         <select id="monedas" v-model="monedaElegida" @change="cambiarValorMonetario(monedaElegida)">
           <option value="EUR">Euros</option>
-          <option value="USD">Dolares Estadounidenses</option>
+          <option value="USD">Dólares Estadounidenses</option>
           <option value="JPY">Yenes</option>
           <option value="MXN">Pesos Mexicanos</option>
         </select>
@@ -38,7 +38,7 @@ const compras = Vue.createApp({
         <button @click="mostrarCarrito = !mostrarCarrito" class="mCarrito">Carrito</button>
           <div v-if="mostrarCarrito" class="barra_lateral">
             <div v-if="carrito.length > 0">
-              <div v-for="(item, index) in carrito"> <!--Uso cada diccionario del array del carrito de la compra para componer el carrito con sus productos-->
+              <div v-for="(item, index) in carrito" class="itemCarrito"> <!--Uso cada diccionario del array del carrito de la compra para componer el carrito con sus productos-->
                 <img :src="parts[item['id'] - 1].imagen" :alt="parts[item['id'] - 1].componente" width="50" height="50" />
                 {{ item["nombre"] }} x{{ item["cantidad"] }} ---> {{ item["precio"] }} {{ simbolos[monedaElegida] }}
                 <button @click="carrito.splice(index, 1)"><img src="img/bin.webp" width="24" height="24"></button> <!--Con esto elimino el item del carito-->
@@ -69,7 +69,7 @@ const compras = Vue.createApp({
           precio_base: 1600,
           precio_variable: 1600,
           imagen: "img/RTX4090.webp",
-          descripcion: "La tarjeta grafica más potente del mercado"
+          descripcion: "La tarjeta gráfica más potente del mercado"
         },
         { 
           id: 2,
@@ -78,7 +78,7 @@ const compras = Vue.createApp({
           precio_base: 299,
           precio_variable: 299,
           imagen: "img/GTX1660TI.webp",
-          descripcion: "Una tarjeta grafica un poco más antigua pero que aún así funciona bién si vas a iniciar en el mundo del gaming"
+          descripcion: "Una tarjeta gráfica un poco más antigua pero que aún así funciona bién si vas a iniciar en el mundo del gaming"
         },        
         { 
           id: 3,
@@ -96,7 +96,7 @@ const compras = Vue.createApp({
           precio_base: 90,
           precio_variable: 90,
           imagen: "img/PSU750WATT.webp",
-          descripcion: "Unidad de supply de energia con suficiente potencia para servir todos tus componentes"
+          descripcion: "Unidad de supply de energía con suficiente potencia para servir a todos tus componentes"
         },
         { 
           id: 5,
@@ -106,7 +106,7 @@ const compras = Vue.createApp({
           precio_variable: 260,
           divisa: "EUR",
           imagen: "img/RX6600XT.webp",
-          descripcion: "Una grafica de gama media con una potencia considerable si lo que buscas es calidad precio"
+          descripcion: "Una tarjeta gráfica de gama media con una potencia considerable si lo que buscas es calidad precio"
         },
         { 
           id: 6,
@@ -133,7 +133,7 @@ const compras = Vue.createApp({
           precio_base: 140,
           precio_variable: 140,
           imagen: "img/CRUCIAL4TB.webp",
-          descripcion: "Muchisimo espacio y una buena velocidad a cambio de un precio bastante ajustado"
+          descripcion: "Muchísimo espacio y una buena velocidad a cambio de un precio bastante ajustado"
         },
         { 
           id: 9,
