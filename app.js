@@ -3,8 +3,8 @@
 const compras = Vue.createApp({
   template: `
     <div id="contenido">
-    <h1>Lista de Componentes</h1>
-        <label for="monedas">Moneda: </label>
+    <h1>Lista de Componentes</h1> 
+        <label for="monedas">Moneda: </label> <!--Esta es una lista de opciones para elegir la divisa, que al elegir una divisa llama a la función cambiarValorMonetario()-->
         <select id="monedas" v-model="monedaElegida" @change="cambiarValorMonetario(monedaElegida)">
           <option value="EUR">Euros</option>
           <option value="USD">Dolares Estadounidenses</option>
@@ -14,7 +14,7 @@ const compras = Vue.createApp({
       <div id="flexbox">
         
         <div class="pc">
-          <div v-for="pc in paginatedPCS" :key="pc.id" >
+          <div v-for="pc in paginatedPCS" :key="pc.id" > <!--Muestra todos los productos en contenedores-->
             <img :src="pc.imagen" :alt="pc.componente" width="200" height="200" />
             <div>
               <strong>{{ pc.componente }}</strong> 
@@ -29,7 +29,7 @@ const compras = Vue.createApp({
               <button @click="pc.cant--" :disabled="pc.cant <= 1">-</button>
               <span>{{ pc.cant }}</span>
               <button @click="pc.cant++" :disabled="pc.cant >= 5">+</button>
-              <button class='carrito' @click="anadirCarrito(pc.id, pc.cant), pc.cant = 0">Añadir al carrito</button>
+              <button class='carrito' @click="anadirCarrito(pc.id, pc.cant), pc.cant = 0">Añadir al carrito</button> 
             </div>
             
           </div>
@@ -38,19 +38,19 @@ const compras = Vue.createApp({
         <button @click="mostrarCarrito = !mostrarCarrito" class="mCarrito">Carrito</button>
           <div v-if="mostrarCarrito" class="barra_lateral">
             <div v-if="carrito.length > 0">
-              <div v-for="(item, index) in carrito">
-              <img :src="parts[item['id'] - 1].imagen" :alt="parts[item['id'] - 1].componente" width="50" height="50" />
-              {{ item["nombre"] }} x{{ item["cantidad"] }} ---> {{ item["precio"] }} {{ simbolos[monedaElegida] }}
-              <button @click="carrito.splice(index, 1)"><img src="img/bin.webp" width="24" height="24"></button>
+              <div v-for="(item, index) in carrito"> <!--Uso cada diccionario del array del carrito de la compra para componer el carrito con sus productos-->
+                <img :src="parts[item['id'] - 1].imagen" :alt="parts[item['id'] - 1].componente" width="50" height="50" />
+                {{ item["nombre"] }} x{{ item["cantidad"] }} ---> {{ item["precio"] }} {{ simbolos[monedaElegida] }}
+                <button @click="carrito.splice(index, 1)"><img src="img/bin.webp" width="24" height="24"></button> <!--Con esto elimino el item del carito-->
               </div>
             </div>
-            <div v-else><strong>No hay ningún producto en el carrito</strong></div>
+            <div v-else><strong>No hay ningún producto en el carrito</strong></div> <!--Si no hay ningun item en el carrito, te mostrará este mensaje-->
             <div class="sidebar-footer">Total: {{ precioTotal() }} {{ simbolos[monedaElegida] }}</div>
           </div>
         </div>
       </div>
 
-      <div class="pagination">
+      <div class="pagination"> <!--La paginación para las páginas de la tienda-->
         <button @click="prevPage" :disabled="currentPage === 1">Anterior</button>
         <span>Página {{ currentPage }} de {{ totalPages }}</span>
         <button @click="nextPage" :disabled="currentPage === totalPages">Siguiente</button>
