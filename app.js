@@ -29,7 +29,7 @@ const compras = Vue.createApp({
               <button @click="pc.cant--" :disabled="pc.cant <= 1">-</button>
               <span>{{ pc.cant }}</span>
               <button @click="pc.cant++" :disabled="pc.cant >= 5">+</button>
-              <button class='carrito' @click="anadirCarrito(pc.id, pc.cant), pc.cant = 2000">Añadir al carrito</button>
+              <button class='carrito' @click="anadirCarrito(pc.id, pc.cant), pc.cant = 0">Añadir al carrito</button>
             </div>
             
           </div>
@@ -200,7 +200,7 @@ const compras = Vue.createApp({
       }
       else { // Si lo encuentra, actualiza la cantidad de items y el precio total
         this.carrito[indexArray]["cantidad"] += cant
-        this.carrito[indexArray]["precio"] = (this.parts[id - 1].precio_variable * this.carrito[indexArray]["cantidad"])
+        this.carrito[indexArray]["precio"] = ((this.parts[id - 1].precio_variable * this.carrito[indexArray]["cantidad"])).toFixed(2)
       }
     },
     precioTotal() { // Función para mostrar el precio total en el desglose del carrito
