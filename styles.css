@@ -5,14 +5,17 @@ html{
 ul {
     list-style: none;
     padding: 0;
+    z-index: 0;
   }
   li {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    z-index: 0;
   }
   img {
     cursor: pointer;
+    z-index: 0;
   }
   .pagination {
     width: 20%;
@@ -22,6 +25,7 @@ ul {
     align-items: center;
     bottom: 0;
     margin: 0% 40% 0% 40%;
+    z-index: 0;
   }
   button {
     margin: 0 10px;
@@ -32,8 +36,20 @@ ul {
   button.carrito{
     position: relative;
     bottom: 0%;
+    
   }
 
+  button.mCarrito{
+    z-index: 2;
+    border: solid black 2px;
+    height: 100px;
+    width: 100px;
+    margin-top: -80%;
+    }
+  .flexcarrito{
+    display: flex;
+    flex-direction: row;
+  }
   input{
     padding: 3%;
     border: 1px solid rgb(209, 246, 255);
@@ -44,6 +60,7 @@ ul {
   display: flex;
   flex-direction: row;
   gap: 10%;
+  z-index: 0;
 }
 
 @media (max-width: 768px) {
@@ -57,7 +74,7 @@ ul {
   }
   #contenido{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
@@ -71,21 +88,22 @@ ul {
   border: 4px rgb(209, 246, 255) solid;
   border-radius: 4%;
   padding: 1% 1% 0% 1%;
+  z-index: 0;
 }
 
-.itemsporpag{
-  float: right;
-  margin-right: 0%;
-  width: 30%;
-}
 
 .barra_lateral{
+  z-index: 1;
+  padding: 2%;
   width:fit-content;
-  height: 100%;
+  height: fit-content;
+  position:absolute;
   right: 0;
   background-color: rgb(209, 246, 255);
+  margin-top: 2%;
 }
 
 #flexbox{
+  display: flex;
   flex-flow: row;
 }

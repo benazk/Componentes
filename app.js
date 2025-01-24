@@ -3,8 +3,7 @@
 const compras = Vue.createApp({
   template: `
     <div id="contenido">
-      <div id="flexbox">
-        <h1>Lista de Componentes</h1>
+    <h1>Lista de Componentes</h1>
         <label for="monedas">Moneda: </label>
         <select id="monedas" v-model="monedaElegida" @change="cambiarValorMonetario(monedaElegida)">
           <option value="EUR">Euros</option>
@@ -12,6 +11,8 @@ const compras = Vue.createApp({
           <option value="JPY">Yenes</option>
           <option value="MXN">Pesos Mexicanos</option>
         </select>
+      <div id="flexbox">
+        
         <div class="pc">
           <div v-for="pc in paginatedPCS" :key="pc.id" >
             <img :src="pc.imagen" :alt="pc.componente" width="200" height="200" />
@@ -33,8 +34,8 @@ const compras = Vue.createApp({
             
           </div>
         </div>
-        <div>
-        <button @click="mostrarCarrito = !mostrarCarrito">Carrito</button>
+        <div class=flexcarrito>
+        <button @click="mostrarCarrito = !mostrarCarrito" class="mCarrito">Carrito</button>
           <div v-if="mostrarCarrito"class="barra_lateral">
           
             <div v-for="(item, index) in carrito">
